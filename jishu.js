@@ -1,24 +1,24 @@
 技术选择
 
-模块化
+// 模块化
 
-NOTE：以下讨论都是基于 JavaScript 的模块组织（每个模块均以文件形式组织），而非工程的模块化。
-The secret to building large app is never build arge apps. Break your applications into small pieces. Then, assemble those testable, bite-sized pieces into your big application.
-Justin Meyer
-其他语言中的模块支持
-Java - import
-C# - using
-css - @import
-但在 JavaScript 中并不存在模块组织在并不支持，于是产生了很多，模块系统。
-模块的职责
-封装实现（将复杂的内容于外界个例）
-暴露接口（外部可通过接口使用模块）
-声明依赖（提供给模块系统使用）
-模块的使用
+// NOTE：以下讨论都是基于 JavaScript 的模块组织（每个模块均以文件形式组织），而非工程的模块化。
+// The secret to building large app is never build arge apps. Break your applications into small pieces. Then, assemble those testable, bite-sized pieces into your big application.
+// Justin Meyer
+// 其他语言中的模块支持
+// Java - import
+// C# - using
+// css - @import
+// 但在 JavaScript 中并不存在模块组织在并不支持，于是产生了很多，模块系统。
+// 模块的职责
+// 封装实现（将复杂的内容于外界个例）
+// 暴露接口（外部可通过接口使用模块）
+// 声明依赖（提供给模块系统使用）
+// 模块的使用
 
-反模式（Anti-Pattern）
+// 反模式（Anti-Pattern）
 
-反模式既没有使用任何设计模式。
+// 反模式既没有使用任何设计模式。
 math.js
 function add(a, b) {
   return a + b;
@@ -26,9 +26,9 @@ function add(a, b) {
 function sub(a, b) {
   return a - b;
 }
-上面的代码有下面的几个缺点：
-无封装性
-接口结构不明显
+// 上面的代码有下面的几个缺点：
+// 无封装性
+// 接口结构不明显
 calculator.js
 var action = 'add';
 function compute(a, b) {
@@ -37,10 +37,10 @@ function compute(a, b) {
     case 'sub': return sub(a, b);
   }
 }
-上面的代码也有几个缺点：
-没有依赖声明
-使用全局状态
-字面量（Object Literal）
+// 上面的代码也有几个缺点：
+// 没有依赖声明
+// 使用全局状态
+// 字面量（Object Literal）
 
 math.js
 var math = {
@@ -51,7 +51,7 @@ var math = {
     return a - b;
   }
 };
-结构性好，但没有访问控制。
+// 结构性好，但没有访问控制。
 calculator.js
 var calculator = {
   action: 'add',
@@ -62,11 +62,11 @@ var calculator = {
     }
   }
 }
-同样没有依赖声明
-IIFE（Immediately-invoked Function Expresion)
+// 同样没有依赖声明
+// IIFE（Immediately-invoked Function Expresion)
 
-其为自执行函数。
-版本一
+// 其为自执行函数。
+// 版本一
 
 calculator.js
 var calculator = (function(){
@@ -80,8 +80,8 @@ var calculator = (function(){
     }
   }
 })();
-上面的代码可以进行访问控制，但是不能进行依赖声明。
-版本二
+// 上面的代码可以进行访问控制，但是不能进行依赖声明。
+// 版本二
 
 calculator.js
 var calculator = (function(m){
@@ -96,10 +96,10 @@ var calculator = (function(m){
     compute: compute;
   }
 })(math)
-上面的代码虽然可以显示的声明依赖，但是仍然污染了全局变量，而且必须手动进行依赖管理。
-命名空间（Namespace）
+// 上面的代码虽然可以显示的声明依赖，但是仍然污染了全局变量，而且必须手动进行依赖管理。
+// 命名空间（Namespace）
 
-命运空间可以解决全局变量的污染的问题。
+// 命运空间可以解决全局变量的污染的问题。
 math.js
 namespace('math', [], function(){
   function add(a, b) { return a + b; }
@@ -121,16 +121,16 @@ namespace('calculator', ['math'], function(m){
     compute: compute;
   }
 })
-模块管理
+// 模块管理
 
-复杂的模块管理，不能单纯的通过代码文件的排列顺序来进行管理。于是引入了模块系统，它有下面的职责：
-依赖管理（加载、分析、注入、初始化—）
-决定模块的写法
-常用的模块系统有 Common.JS、AMD、语言基本的模块化。
-CommonJS
+// 复杂的模块管理，不能单纯的通过代码文件的排列顺序来进行管理。于是引入了模块系统，它有下面的职责：
+// 依赖管理（加载、分析、注入、初始化—）
+// 决定模块的写法
+// 常用的模块系统有 Common.JS、AMD、语言基本的模块化。
+// CommonJS
 
-CommonJS 是一个模块规范，通常适用于非浏览器环境（NodeJS）。
-A module spec for JavaScript outside the browser.
+// CommonJS 是一个模块规范，通常适用于非浏览器环境（NodeJS）。
+// A module spec for JavaScript outside the browser.
 math.js
 function add(a, b) {
   return a + b;
@@ -367,7 +367,7 @@ Living-Template
 
 其拼接了字符串模板和 DOM 模板的技术（类似 Knockout.JS 注释的实现），最终导致 DOM 树与数据模型相联系。
 String-based	DOM-based	Living-Template
-好处	可以服务器端运行		
+好处	可以服务器端运行
 解决方案	dust.JS、hogan、dot.JS	Angular.JS、Vue.JS、Knockout	Regular.JS、Ractive.JS、htmlbar
 初始化时间	☆☆☆	☆	☆☆
 动态更新	无	☆☆☆	☆☆☆
