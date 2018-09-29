@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>元素一</div>
+    <div>元素二</div>
+    <div id="div1">元素三</div>
+    <script type="text/javascript">
+    var dd = document.getElementById('div1');
+    console.log(dd)
+    console.log(typeof dd)
+    //var $div = $('div'); //jQuery对象
+    // div = $div[0];
+    //  div.style.color = 'red'; //操作dom对象的属性
+    $("div")[1].style.color = "red";
+    </script>
+    <!--  jquery是一个类数组对象object,
+    因此转换时，操作的DOM必须是具体某一个元素， 查看控制台上述dd就是<div id="div1">元素三</div>-->
+</body>
+
+</html>
