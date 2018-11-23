@@ -1,1 +1,1 @@
-# jQuery学习要点
+# jQuery
